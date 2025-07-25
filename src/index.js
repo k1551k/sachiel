@@ -19,7 +19,16 @@ app.use((req, res, next) => {
 });
 
 app.get("/accounts", async (_, res) => {
-  const accounts = await getAccounts();
+  const accounts = await getAccounts()
+    .then((data) =>
+      data.reduce((acc, el) => {
+        if (el.currency === "KRW" || el.balance * el.avg_buy_price > 1) {
+          acc.set(el.currency, el.balance);
+        }
+        return acc;
+      }, new Map())
+    )
+    .then((data) => Object.fromEntries(data));
   res.json(accounts);
 });
 
