@@ -2,7 +2,8 @@
   "name": "sachiel",
   "scripts": {
     "dev": "node --env-file=.env.dev --watch src/index.js",
-    "start": "pm2 start ecosystem.config.js"
+    "start": "pm2 start ecosystem.config.js",
+    "delete:sachiel": "pm2 delete sachiel"
   },
   "packageManager": "pnpm@10.12.4",
   "dependencies": {
