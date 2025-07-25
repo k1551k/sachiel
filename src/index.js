@@ -1,4 +1,5 @@
-const express = require("express");
+import express from "express";
+import { getAccounts } from "./upbit.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -17,8 +18,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/accounts", (req, res) => {
-  res.send("ACCOUNTS ENDPOINT 😀");
+app.get("/accounts", async (_, res) => {
+  const accounts = await getAccounts();
+  res.json(accounts);
 });
 
 app.listen(port, () => {

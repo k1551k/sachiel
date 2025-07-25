@@ -8,9 +8,12 @@
   "packageManager": "pnpm@10.12.4",
   "dependencies": {
     "express": "^5.1.0",
-    "ky": "^1.8.2"
+    "jsonwebtoken": "^9.0.2",
+    "ky": "^1.8.2",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "pm2": "^6.0.8"
-  }
+  },
+  "type": "module"
 }
