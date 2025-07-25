@@ -1,5 +1,5 @@
 import express from "express";
-import { getAccounts } from "./upbit.js";
+import { askKRWDeposit, getAccounts } from "./upbit.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -30,6 +30,12 @@ app.get("/accounts", async (_, res) => {
     )
     .then((data) => Object.fromEntries(data));
   res.json(accounts);
+});
+
+app.post("/deposits", async (req, res) => {
+  const { amount } = req.body;
+  await askKRWDeposit(amount);
+  res.status(200).json({ message: "Successfully Requested" });
 });
 
 app.listen(port, () => {
