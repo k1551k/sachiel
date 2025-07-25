@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "node --env-file=.env.dev --watch src/index.js",
     "start": "pm2 start ecosystem.config.js",
+    "start:prod": "authbind --deep pm2 start ecosystem.config.js",
     "pull": "git pull origin main && pm2 restart sachiel"
   },
   "packageManager": "pnpm@10.12.4",
